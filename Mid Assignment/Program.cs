@@ -111,6 +111,7 @@ namespace Mid_Assignment
                     B1.PrintAccountDetails();
                 }
 
+                Console.WriteLine();
                 Console.WriteLine("Do you want to go back to main menu(Y/N): ");
                 r = Console.ReadLine();
             } while (r == "y" || r == "Y");
