@@ -70,12 +70,5 @@ namespace Mid_Assignment
             Console.WriteLine(address.GetAddress());
         }
 
-        //public int GetAccNum()
-       // {
-        //    int a = accountNumber + 1;
-        //    return a;
-        //}
-
-
     }
 }
