@@ -63,7 +63,7 @@ namespace Mid_Assignment
             if (flag == 0)
                 Console.WriteLine("Account not found");
 
-            if (flag == 1)
+            else if (flag == 1)
                 Console.WriteLine("Account Deleted");
         }
 
