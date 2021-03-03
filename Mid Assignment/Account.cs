@@ -51,7 +51,7 @@ namespace Mid_Assignment
         {
             if (balance >= ammount)
             {
-                receiver.balance = balance + ammount;
+                receiver.balance = receiver.balance + ammount;
                 balance = balance - ammount;
 
                 Console.WriteLine("Transferred " + ammount + "tk");
