@@ -9,13 +9,15 @@ namespace Mid_Assignment
     class Account
     {
         private int accountNumber;
-        private string accountName;
-        private double balance;
-        private Address address;
+        protected string name;
+        protected double balance;
+        protected string dateOfBirth;
+        protected Address address;
 
-        public Account(string accountName, double balance, Address address)
+        public Account(string name, string dateOfBirth, double balance, Address address)
         {
-            this.accountName = accountName;
+            this.name = name;
+            this.dateOfBirth = dateOfBirth;
             this.balance = balance;
             this.address = address;
         }
@@ -27,7 +29,7 @@ namespace Mid_Assignment
        }
 
       
-        public void Withdraw(double ammount)
+        public virtual void Withdraw(double ammount)
         {
             if (balance >= ammount)
             {
@@ -49,7 +51,7 @@ namespace Mid_Assignment
 
         public void Transfer(Account receiver, double ammount)
         {
-            if (balance >= ammount)
+            if (balance > ammount)
             {
                 receiver.balance = receiver.balance + ammount;
                 balance = balance - ammount;
@@ -58,17 +60,80 @@ namespace Mid_Assignment
             }
 
             else
-                Console.WriteLine("Can't Be Transferred! Transfer Ammount Exceed Balance");
+                Console.WriteLine("Can't Be Transferred!");
         }
 
-        public void ShowAccountInformation()
+        public virtual void ShowAccountInformation()
         {
             Console.WriteLine();
-            Console.WriteLine("Account Name " + accountName);
+            Console.WriteLine("Name " + name);
             Console.WriteLine("Account Number: " + AccountNumber);
+            Console.WriteLine("Date Of Bith: " + AccountNumber);
             Console.WriteLine("Balance: " + balance);
             Console.WriteLine(address.GetAddress());
         }
 
     }
+
+    class SavingsAccount : Account
+    {
+        public SavingsAccount(string name, string dateOfBirth, double balance, Address address) : base(name, dateOfBirth, balance, address)
+        {
+            this.name = name;
+            this.dateOfBirth = dateOfBirth;
+            this.balance = balance;
+            this.address = address;
+        }
+
+        public override void Withdraw(double ammount)
+        {
+            if (balance == ammount)
+            {
+                Console.WriteLine("Balance Can't Be 0!");
+            }
+            else
+            {
+                base.Withdraw(ammount);
+            }
+        }
+
+        public override void ShowAccountInformation()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Savings Account");
+            Console.WriteLine("----------------");
+            Console.WriteLine("Name " + name);
+            Console.WriteLine("Account Number: " + AccountNumber);
+            Console.WriteLine("Date Of Bith: " + AccountNumber);
+            Console.WriteLine("Balance: " + balance);
+            Console.WriteLine(address.GetAddress());
+        }
+    }
+        class CheckingAccount : Account 
+        {
+            public CheckingAccount(string name, string dateOfBirth, double balance, Address address) : base(name, dateOfBirth, balance, address) 
+            {
+                this.name = name;
+                this.balance = balance;
+                this.address = address;
+            }
+
+            public override void Withdraw(double ammount)
+            {                   
+                base.Withdraw(ammount);
+            }
+
+           public override void ShowAccountInformation()
+           {
+            Console.WriteLine();
+            Console.WriteLine("Checking Account");
+            Console.WriteLine("----------------");
+            Console.WriteLine("Name " + name);
+            Console.WriteLine("Account Number: " + AccountNumber);
+            Console.WriteLine("Date Of Bith: " + AccountNumber);
+            Console.WriteLine("Balance: " + balance);
+            Console.WriteLine(address.GetAddress());
+           }
+        }
 }
+
