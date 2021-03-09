@@ -38,10 +38,12 @@ namespace Mid_Assignment
 
             if (flag == 1)
             {
+                Console.WriteLine();
                 Console.WriteLine("Account Created");
             }
             else if (flag == 0)
             {
+                Console.WriteLine();
                 Console.WriteLine("Account Can't be Created");
             }
         }
@@ -61,10 +63,12 @@ namespace Mid_Assignment
 
             if (flag == 1)
             {
+                Console.WriteLine();
                 Console.WriteLine("Account Created");
             }
             else if (flag == 0)
             {
+                Console.WriteLine();
                 Console.WriteLine("Account Can't be Created");
             }
         }
@@ -93,7 +97,10 @@ namespace Mid_Assignment
                     }
 
                     if (flag == 0)
+                    {
+                        Console.WriteLine();
                         Console.WriteLine("Account not found");
+                    }
                 }
 
                 else if (transactionType == 2)
@@ -114,14 +121,15 @@ namespace Mid_Assignment
                     }
 
                     if (flag == 0)
+                    {
+                        Console.WriteLine();
                         Console.WriteLine("Account not found");
+                    }
                 }
 
                 else if (transactionType == 3)
                 {
                     int flag = 0;
-                    int flag2 = 0;
-
                     for (int i = 0; i < myBank1.Length; i++)
                     {
                         if (myBank1[i] == null)
@@ -131,36 +139,32 @@ namespace Mid_Assignment
                         else if (myBank1[i].AccountNumber == accountNumber)
                         {
                             flag = 1;
-
-                            for (int j = 0; j < myBank1.Length && j < myBank2.Length; j++)
+                            int flag2 = 0;
+                            for (int j = 0; j < myBank1.Length; j++)
                             {
-                                if (myBank1[j] == null || myBank2 == null)
+                                if (myBank1[j] == null)
                                 {
                                     continue;
                                 }
-
                                 else if (myBank1[j].AccountNumber == receiverAccNum)
                                 {
                                     myBank1[i].Transfer(myBank1[j], amm);
                                     flag2 = 1;
                                     break;
                                 }
+                            }
 
-                                else if (myBank2[j].AccountNumber == receiverAccNum)
-                                {
-                                    myBank1[i].Transfer(myBank2[j], amm);
-                                    flag2 = 1;
-                                    break;
-                                }
+                            if (flag2 == 0)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("Reciever Account Not Found!");
                             }
                         }
-
-                        if (flag2 == 0)
-                            Console.WriteLine("Reciever Account Not Found!");
                     }
 
                     if (flag == 0)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Sender Account Not Found!");
                     }
                 }
@@ -187,7 +191,10 @@ namespace Mid_Assignment
                     }
 
                     if (flag == 0)
+                    {
+                        Console.WriteLine();
                         Console.WriteLine("Account not found");
+                    }
                 }
 
                 else if (transactionType == 2)
@@ -208,105 +215,107 @@ namespace Mid_Assignment
                     }
 
                     if (flag == 0)
+                    {
+                        Console.WriteLine();
                         Console.WriteLine("Account not found");
+                    }
                 }
 
                 else if (transactionType == 3)
                 {
                     int flag = 0;
-                    int flag2 = 0;
-
                     for (int i = 0; i < myBank2.Length; i++)
                     {
                         if (myBank2[i] == null)
                         {
                             continue;
                         }
-
                         else if (myBank2[i].AccountNumber == accountNumber)
                         {
                             flag = 1;
-
-                            for (int j = 0; j < myBank2.Length && j <myBank1.Length; j++)
+                            int flag2 = 0;
+                            for (int j = 0; j < myBank1.Length; j++)
                             {
-                                if (myBank1[j] == null || myBank2[j] == null)
+                                if (myBank2[j] == null)
                                 {
                                     continue;
                                 }
-
-                                else if (myBank1[j].AccountNumber == receiverAccNum)
+                                else if (myBank2[j].AccountNumber == receiverAccNum)
                                 {
-                                    myBank2[j].Transfer(myBank1[j], amm);
-                                    flag2 = 1;
-                                    break;
-                                }
-
-                                else if (myBank2[j].AccountNumber == receiverAccNum) 
-                                {
-                                    myBank2[j].Transfer(myBank2[j], amm);
+                                    myBank2[i].Transfer(myBank2[j], amm);
                                     flag2 = 1;
                                     break;
                                 }
                             }
 
                             if (flag2 == 0)
+                            {
+                                Console.WriteLine();
                                 Console.WriteLine("Reciever Account Not Found!");
+                            }
                         }
+                    }
 
-
-                        if (flag == 0)
-                            Console.WriteLine("Sender Account Not Found!");
-
+                    if (flag == 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Sender Account Not Found!");
                     }
                 }
             }
         }
-            public void PrintAccountDetails(string acctype)
+        public void PrintAccountDetails(string acctype)
+        {
+            if (acctype == "savings")
             {
-                if (acctype == "savings")
+                int flag = 0;
+
+                for (int i = 0; i < myBank1.Length; i++)
                 {
-                    int flag = 0;
-
-                    for (int i = 0; i < myBank1.Length; i++)
+                    if (myBank1[i] == null)
                     {
-                        if (myBank1[i] == null)
-                        {
-                            continue;
-                        }
-
-                        else
-                        {
-                            myBank1[i].ShowAccountInformation();
-                            flag = 1;
-                        }
+                        continue;
                     }
 
-                    if (flag == 0)
-                        Console.WriteLine("No Account To Show!");
+                    else
+                    {
+                        myBank1[i].ShowAccountInformation();
+                        flag = 1;
+                    }
                 }
-                else if (acctype == "checking")
+
+                if (flag == 0)
                 {
-                    int flag = 0;
+                    Console.WriteLine();
+                    Console.WriteLine("No Account To Show!");
+                }
+            }
+            else if (acctype == "checking")
+            {
+                int flag = 0;
 
-                    for (int i = 0; i < myBank2.Length; i++)
+                for (int i = 0; i < myBank2.Length; i++)
+                {
+                    if (myBank2[i] == null)
                     {
-                        if (myBank2[i] == null)
-                        {
-                            continue;
-                        }
-
-                        else
-                        {
-                            myBank2[i].ShowAccountInformation();
-                            flag = 1;
-                        }
+                        continue;
                     }
 
-                    if (flag == 0)
-                        Console.WriteLine("No Account To Show!");
+                    else
+                    {
+                        myBank2[i].ShowAccountInformation();
+                        flag = 1;
+                    }
+                }
+
+                if (flag == 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("No Account To Show!");
                 }
             }
         }
-    } 
+    }
+}
 
 

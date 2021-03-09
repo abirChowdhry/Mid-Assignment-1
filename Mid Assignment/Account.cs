@@ -51,7 +51,7 @@ namespace Mid_Assignment
 
         public void Transfer(Account receiver, double ammount)
         {
-            if (balance > ammount)
+            if (balance > ammount && ammount > 0)
             {
                 receiver.balance = receiver.balance + ammount;
                 balance = balance - ammount;

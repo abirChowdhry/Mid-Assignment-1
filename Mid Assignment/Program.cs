@@ -101,89 +101,96 @@ namespace Mid_Assignment
                         break;
                     }
                 }
-
+              
                 else if (choice == "account")
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("1.Make a Withdrawal ");
-                    Console.WriteLine("2.Make a Deposite ");
-                    Console.WriteLine("3.Make a Transfer ");
-                    Console.WriteLine("4.Show the number of transaction and balance ");
-                    Console.WriteLine("5.Quit ");
-                    Console.WriteLine();
-                    Console.WriteLine("Enter Your Choice: ");
-                    string choice1 = Console.ReadLine();
-
-                    if (choice1 == "withdraw")
                     {
-                        Console.WriteLine("Enter The Ammount to Withdraw: ");
-                        double ammount = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine();
+                        Console.WriteLine("1.Make a Withdrawal(withdraw) ");
+                        Console.WriteLine("2.Make a Deposite(deposite) ");
+                        Console.WriteLine("3.Make a Transfer(transfer) ");
+                        Console.WriteLine("4.Show the number of transaction and balance(show) ");
+                        Console.WriteLine("5.Exit The Application(quit) ");
+                        Console.WriteLine();
+                        Console.WriteLine("Enter Your Choice: ");
+                        string choice1 = Console.ReadLine();
 
-                        Console.WriteLine("Enter Account Number: ");
-                        int accnum = Convert.ToInt32(Console.ReadLine());
+                        if (choice1 == "withdraw")
+                        {
+                            Console.WriteLine("Enter The Ammount to Withdraw: ");
+                            double ammount = Convert.ToDouble(Console.ReadLine());
 
-                        Console.WriteLine("Enter Account Type: ");
-                        string accType = Console.ReadLine();
+                            Console.WriteLine("Enter Account Number: ");
+                            int accnum = Convert.ToInt32(Console.ReadLine());
 
-                        if (accType == "savings")
-                            B1.Transaction(1, ammount, accnum, 1, accType);
+                            Console.WriteLine("Enter Account Type: ");
+                            string accType = Console.ReadLine();
 
-                        else if (accType == "checking")
-                            B2.Transaction(1, ammount, accnum, 1, accType);
+                            if (accType == "savings")
+                                B1.Transaction(1, ammount, accnum, 1, accType);
+
+                            else if (accType == "checking")
+                                B2.Transaction(1, ammount, accnum, 1, accType);
+                        }
+
+                        else if (choice1 == "deposite")
+                        {
+                            Console.WriteLine("Enter The Ammount to Deposite: ");
+                            double ammount = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter Account Number: ");
+                            int accnum = Convert.ToInt32(Console.ReadLine());
+
+                            Console.WriteLine("Enter Account Type: ");
+                            string accType = Console.ReadLine();
+
+                            if (accType == "savings")
+                                B1.Transaction(2, ammount, accnum, 1, accType);
+
+                            else if (accType == "checking")
+                                B2.Transaction(2, ammount, accnum, 1, accType);
+                        }
+
+                        else if (choice1 == "transfer")
+                        {
+                            Console.WriteLine("Enter The Ammount to Transfer: ");
+                            double ammount = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter Sender Account Number: ");
+                            int accnum = Convert.ToInt32(Console.ReadLine());
+
+                            Console.WriteLine("Enter Sender's Account Type: ");
+                            string accType1 = Console.ReadLine();
+
+                            Console.WriteLine("Enter Receiver Account Number: ");
+                            int receiver = Convert.ToInt32(Console.ReadLine());
+
+                            if (accType1 == "savings")
+                                B1.Transaction(3, ammount, accnum, receiver, accType1);
+
+                            else if (accType1 == "checking")
+                                B2.Transaction(3, ammount, accnum, receiver, accType1);
+                        }
+
+                        else if (choice1 == "show")
+                        {
+                            Console.WriteLine("Enter Account Type: ");
+                            string accType1 = Console.ReadLine();
+
+                            if (accType1 == "savings")
+                                B1.PrintAccountDetails(accType1);
+
+                            else if (accType1 == "checking")
+                                B2.PrintAccountDetails(accType1);
+                        }
+
+                        else if (choice1 == "quit")
+                        {
+                            r = "y";
+                            break;
+                        }
+
                     }
-
-                    else if (choice1 == "deposite")
-                    {
-                        Console.WriteLine("Enter The Ammount to Deposite: ");
-                        double ammount = Convert.ToDouble(Console.ReadLine());
-
-                        Console.WriteLine("Enter Ammount Number: ");
-                        int accnum = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Enter Account Type: ");
-                        string accType = Console.ReadLine();
-
-                        if (accType == "savings")
-                            B1.Transaction(2, ammount, accnum, 1, accType);
-
-                        else if (accType == "checking")
-                            B2.Transaction(2, ammount, accnum, 1, accType);
-                    }
-
-                    else if (choice1 == "transfer")
-                    {
-                        Console.WriteLine("Enter The Ammount to Transfer: ");
-                        double ammount = Convert.ToDouble(Console.ReadLine());
-
-                        Console.WriteLine("Enter Sender Account Number: ");
-                        int accnum = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Enter Sender's Account Type: ");
-                        string accType1 = Console.ReadLine();
-
-                        Console.WriteLine("Enter Receiver Account Number: ");
-                        int receiver = Convert.ToInt32(Console.ReadLine());
-
-                        if (accType1 == "savings")
-                            B1.Transaction(3, ammount, accnum, receiver, accType1);
-
-                        else if (accType1 == "checking")
-                            B2.Transaction(3, ammount, accnum, receiver, accType1);
-                    }
-
-                    else if (choice1 == "show")
-                    {
-                        Console.WriteLine("Enter Account Type: ");
-                        string accType1 = Console.ReadLine();
-
-                        if (accType1 == "savings")
-                            B1.PrintAccountDetails(accType1);
-
-                        else if (accType1 == "checking")
-                            B2.PrintAccountDetails(accType1);
-                    }
-
-                }
+               
 
                 else if (choice == "quit") 
                 {
